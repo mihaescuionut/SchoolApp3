@@ -20,9 +20,9 @@ app.use('/api', bookRoutes);
 app.use('/api', enrolmentRoutes);
 
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, './frontend')));
+app.use(express.static(path.join(__dirname, './frontend/build')));
 app.get('*', (req, res)=>{
-    res.sendFile(path.resolve(__dirname, 'frontend', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
 })
 
 db.sequelize.sync().then(()=>{
