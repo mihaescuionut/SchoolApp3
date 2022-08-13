@@ -1,7 +1,7 @@
 export default class Api{
 
     api(path,method='GET',body=null,requiresAuth=false,credentials=null, token=null){
-        const url="http://localhost:3000/"+path;
+        const url=path;
         const options={
             method,
             headers: {
