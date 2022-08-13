@@ -1,11 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import db from './config/config.js';
-import courseRoutes from './routes/courseRoutes.js';
-import userRoutes from './routes/userRoutes.js';
-import bookRoutes from './routes/bookRoutes.js';
-import enrolmentRoutes from './routes/enrolmentRoutes.js';
+import db from './Api/config/config.js';
+import courseRoutes from './Api/routes/courseRoutes.js';
+import userRoutes from './Api/routes/userRoutes.js';
+import bookRoutes from './Api/routes/bookRoutes.js';
+import enrolmentRoutes from './Api/routes/enrolmentRoutes.js';
 import path from "path";
 
 
