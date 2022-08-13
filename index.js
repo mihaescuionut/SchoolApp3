@@ -26,7 +26,7 @@ app.get('*', (req, res)=>{
 })
 
 db.sequelize.sync().then(()=>{
-    app.listen(3000, ()=>{
+    app.listen(5000, ()=>{
         console.log('ceva');
     })
 })

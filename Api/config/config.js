@@ -10,7 +10,7 @@ dotenv.config();
 const configDB=()=>{
     
     try{
-        let sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.USER_PASSWORD, 
+        let sequelize = new Sequelize(process.env.DATABASE, "root", process.env.USER_PASSWORD, 
             {
                 host: process.env.HOST,
                 dialect: process.env.DIALECT
