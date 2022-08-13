@@ -1,6 +1,6 @@
 export default class Api{
 
-    api(path,method='GET',body=null,requiresAuth=false,credentials=null){
+    api(path,method='GET',body=null,requiresAuth=false,credentials=null, token=null){
         const url="http://localhost:3000/"+path;
         const options={
             method,
@@ -12,8 +12,8 @@ export default class Api{
         if(body){
             options.body = JSON.stringify(body);
         }
-        if(requiresAuth){
-
+        if(token){
+            options.headers['Authorization']=`Bearer ${token}`;
         }
 
         return fetch(url, options);
@@ -164,6 +164,19 @@ export default class Api{
                 )
             }else{
                 return create.json();
+            }
+        }catch(e){
+            console.log(e)
+        }
+    }
+
+    async login(user){
+        try{
+            let login = await this.api('api/login', 'POST', user);
+            if(login.status!==200){
+                throw new Error('no login')
+            }else{
+                return login.json();
             }
         }catch(e){
             console.log(e)

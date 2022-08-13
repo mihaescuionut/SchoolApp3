@@ -1,56 +1,41 @@
-import Cookies from "js-cookie";
-import {React, useContext, useState} from "react";
-import { useNavigate } from "react-router-dom";
-import { Context } from "../../Context";
-import Api from "../api";
+import React from "react";
 
-export default () => {
-  const [user, setUser] = useContext(Context);
-  const [email, setEmail] = useState();
-  const [pass, setPass] = useState();
-  let navigate = useNavigate();
 
-  let handleChange=(e)=>{
-    let el = e.target;
-    e.preventDefault();
-    if(el.id == "email"){
-      setEmail(el.value);
-      console.log(el.value)
-    }
-    if(el.id == "password"){
-      setPass(el.value);
-    }
-  }
+export default()=>{
 
-  let handleLogin = async (e)=>{
-    let el = e.target;
-    e.preventDefault();
-    let api = new Api();
-    let u = {
-      email: email,
-      password: pass
-    }
-    let response = await api.login(u);
-    console.log(response);
 
-    setUser(response);
-    Cookies.set("authenticatedUser",JSON.stringify(response));
-    navigate('/');
 
-  }
+    return(
 
-  return (
-
-    <div className="flex justify-center items-center mt-20 mb-20 h-full">
-    <div className="w-1/2 p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100 md:w-1/2 lg:w-1/3 shadow-teal-600 shadow-lg">
-      <h1 className="text-2xl font-bold text-center">Login</h1>
+        <div className="flex justify-center items-center mt-20 mb-20 h-full">
+    <div className="w-1/2 p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100 md:w-1/2 lg:w-1/3 shadow-teal-400 shadow-lg">
+      <h1 className="text-2xl font-bold text-center">Sign Up</h1>
       <form 
-        onChange={handleChange}
         novalidate=""
         action=""
         className="space-y-6 ng-untouched ng-pristine ng-valid"
       >
         <div className="space-y-1 text-sm">
+          <label for="First Name" className="block text-gray-400">
+            First Name
+          </label>
+          <input
+            type="text"
+            name="First Name"
+            id="first_name"
+            placeholder="First Name"
+            className="w-full px-4 py-3 rounded-md border-blue-800 text-darkBlue focus:border-violet-400"
+          />
+          <label for="Last Name" className="block text-gray-400">
+          Last Name
+          </label>
+          <input
+            type="text"
+            name="Last Name"
+            id="last_name"
+            placeholder="Last Name"
+            className="w-full px-4 py-3 rounded-md border-blue-800 text-darkBlue focus:border-violet-400"
+          />
           <label for="Email" className="block text-gray-400">
             Email
           </label>
@@ -61,26 +46,36 @@ export default () => {
             placeholder="Email"
             className="w-full px-4 py-3 rounded-md border-blue-800 text-darkBlue focus:border-violet-400"
           />
-        </div>
-        <div className="space-y-1 text-sm">
-          <label for="password" className="block text-gray-400">
-            Password
+          <label for="Password" className="block text-gray-400">
+          Password
           </label>
           <input
-            type="password"
-            name="password"
+            type="text"
+            name="Password"
             id="password"
             placeholder="Password"
             className="w-full px-4 py-3 rounded-md border-blue-800 text-darkBlue focus:border-violet-400"
           />
+          <label for="Age" className="block text-gray-400">
+          Age
+          </label>
+          <input
+            type="text"
+            name="Age"
+            id="age"
+            placeholder="Age"
+            className="w-full px-4 py-3 rounded-md border-blue-800 text-darkBlue focus:border-violet-400"
+          />
+        </div>
+        <div className="space-y-1 text-sm">
           <div className="flex justify-end text-xs dark:text-gray-400 ">
             <a rel="noopener noreferrer" href="#" className="hover:text-white mt-2">
-              Forgot Password?
+              Already have an account? Sign in!
             </a>
           </div>
         </div>
-        <button onClick={handleLogin} className="block w-full p-3 text-center rounded-tl-full rounded-br-full text-gray-900 bg-teal-400 hover:-translate-y-1 hover:text-white transition-all duration-500 shadow-teal-800 shadow-md font-bold">
-          Sign in
+        <button className="block w-full p-3 text-center rounded-tl-full rounded-br-full text-gray-900 bg-teal-400 hover:-translate-y-1 hover:text-white transition-all duration-500 shadow-teal-800 shadow-md font-bold">
+          Sign up
         </button>
       </form>
       <div className="flex items-center pt-4 space-x-1">
@@ -119,17 +114,8 @@ export default () => {
           </svg>
         </button>
       </div>
-      <p className="text-xs text-center sm:px-6 text-gray-400">
-        Don't have an account?
-        <a
-          rel="noopener noreferrer"
-          href="#"
-          className="underline text-gray-300 ml-2 hover:text-white"
-        >
-          Sign up
-        </a>
-      </p>
+
     </div>
     </div>
-  );
-};
+    )
+}

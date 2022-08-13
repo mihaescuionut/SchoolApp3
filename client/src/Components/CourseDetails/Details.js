@@ -1,15 +1,15 @@
 import { FaCheck } from "react-icons/fa";
 import { useParams } from "react-router-dom";
-import { useEffect, React, useState } from "react";
+import { useEffect, React, useState, useContext } from "react";
 import Api from "../api";
 import { useNavigate } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
+import { Context } from "../../Context";
 
 export default ({ crs }) => {
-  let user = {
-    id: 1,
-    role: "student"
-  }
+
+  const [user, setUser] = useContext(Context);
+  console.log(user);
   const [courses, setCourses] = useState([]);
   const [curs, setCrs] = useState([]);
   const [enrol, setEnrol] = useState([]);
@@ -77,7 +77,7 @@ export default ({ crs }) => {
     fetchCourses();
     fetchStats();
     fetchProfesorCourseById();
-    if(user.role == "student"){
+    if(user.role == "user"){
       fetchEnrols();
     }
   }, []);
@@ -134,10 +134,10 @@ export default ({ crs }) => {
                 id="enrol"
                 className="bg-teal-600 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500 "
               >
-                {profesorCourse.length>0 && profesorCourse[0].role == "student" ? (<>ENROL</>):(<>EDIT</>)} 
+                {profesorCourse.length==0 && user.role == "user" ? (<>ENROL</>):(<>EDIT</>)} 
               </button>
 
-              {profesorCourse.length>0 && profesorCourse[0].role == "professor" ? (<><button className="bg-red-400 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500 ">DELETE</button></>):(<button className="hidden"></button>)} 
+              {profesorCourse.length>0 && user.role == "professor" ? (<><button className="bg-red-400 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500 ">DELETE</button></>):(<button className="hidden"></button>)} 
 
 
               <button className="bg-sky-400 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500">

@@ -6,6 +6,7 @@ import courseRoutes from './routes/courseRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import bookRoutes from './routes/bookRoutes.js';
 import enrolmentRoutes from './routes/enrolmentRoutes.js';
+import path from "path";
 
 
 dotenv.config();
@@ -17,6 +18,12 @@ app.use('/api', courseRoutes);
 app.use('/api', userRoutes);
 app.use('/api', bookRoutes);
 app.use('/api', enrolmentRoutes);
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, './frontend')));
+app.get('*', (req, res)=>{
+    res.sendFile(path.resolve(__dirname, 'frontend', 'index.html'));
+})
 
 db.sequelize.sync().then(()=>{
     app.listen(3000, ()=>{

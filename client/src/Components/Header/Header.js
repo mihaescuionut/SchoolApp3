@@ -1,10 +1,15 @@
-import React from "react";
+import {React, useContext }from "react";
 import { IoSchoolOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
+import {Context} from "../../Context";
+import Cookies from "js-cookie";
 
 export default () => {
   let navigate = useNavigate();
+  const [user, setUser] = useContext(Context);
+  console.log(user);
+
 
   let handleNav = (e) => {
     let el = e.target;
@@ -19,7 +24,12 @@ export default () => {
       navigate('/statistics');
     }else if(el.id == "login"){
       navigate('/login');
-    }else if(el.id == "menu-btn"){
+    }else if(el.textContent == "Sign Out"){
+      setUser(undefined);
+      Cookies.remove("authenticatedUser");
+    }else if(el.textContent == "Sign Up"){
+      navigate('/register')
+    } else if(el.id == "menu-btn"){
       el.classList.toggle("open");
       menu.classList.toggle("flex");
       menu.classList.toggle("hidden");
@@ -32,14 +42,14 @@ export default () => {
 
   return (
     <header
-    onClick={handleNav}  className="flex items-center justify-center p-10 text-center h-40 md:h-20 md:flex md:flex-row md:justify-between md:items-center w-full lg:justify-around"
+    onClick={handleNav}  className="flex items-center justify-center p-10 text-center h-40 md:h-20 md:flex md:flex-row md:justify-between md:items-center w-full"
     >
-      <div className="hidden items-center justify-center mx-auto md:mx-0 text-white text-2xl font-bold md:flex">
+      <div className="hidden items-center justify-center w-1/12 mx-auto md:mx-0 text-white text-2xl font-bold md:flex">
         <IoSchoolOutline size="4rem"></IoSchoolOutline>
       </div>
 
       {/* MENU */}
-      <div onClick={handleNav} className="h-10 hidden w-1/2 gap-10 md:flex md:space-x-8 md:items-center md:justify-center ">
+      <div onClick={handleNav} className="h-10 hidden md:w-2/3  md:flex md:space-x-8 md:items-center md:justify-between ">
         <div className="flex flex-row items-center gap-5 w-full">
           <a href="" className="hover:text-accentCyan font-bold">
             Home
@@ -55,26 +65,41 @@ export default () => {
           </a>
         </div>
 
-        <div className="flex items-center justify-center gap-4 ">
-        <a
-            id="login"
-            className="font-bold p-3 rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer"
-          >
-            Login
-          </a>
-          <a
-            className="bg-teal-400 font-bold p-3 rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer"
-          >
-            SignUp
-          </a>
-          <button id="new_course" className="flex flex-row items-center justify-center p-3 bg-darkBlue3 gap-2 rounded-xl text-white font-bold hover:scale-110 transition-all duration-500">
-             <FaPlus></FaPlus> Course
-          </button>
+        <div className="flex flex-row items-center justify-center w-1/2 gap-4">
+
+        {user ? 
+           
+           (
+           <>
+              <p>Welcome, {user.name}</p>      
+              <a className="bg-red-400 font-bold p-3 w-full rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
+                Sign Out
+              </a>
+              <button id="new_course" className="flex flex-row items-center justify-center p-3 bg-darkBlue3 gap-2 rounded-xl text-white font-bold hover:scale-110 transition-all duration-500">
+                 <FaPlus></FaPlus> Course
+              </button>
+           </>
+           )
+
+           :
+
+           (
+            
+            <>
+            <a id="login" className="font-bold p-3 rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
+                Login
+            </a>
+              <a className="bg-teal-400 font-bold p-3 rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
+                Sign Up
+              </a>
+              </>
+            )
+            }
           
         </div>
       </div>
 
-      <div className="absolute left-10 md:hidden " >
+      <div className="absolute left-10 md:hidden">
         <button
           id="menu-btn"
           type="button"
