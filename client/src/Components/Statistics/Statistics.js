@@ -69,10 +69,10 @@ export default () => {
               <FaCheck /> <p> Accredited course</p>
             </div>
             <div className="flex flex-row gap-2 items-center ">
-              <FaCheck /> <p> Data science</p>
+              <FaCheck /> <p>Computer Science</p>
             </div>
             <div className="flex flex-row gap-2 items-center ">
-              <FaCheck /> <p> Development</p>
+              <FaCheck /> <p>Easy to learn</p>
             </div>
           </div>
         </div>

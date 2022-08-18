@@ -32,9 +32,13 @@ const unrolCourseById=expressAsyncHandler(async (req, res)=>{
 })
 
 const enrolCourseById=expressAsyncHandler(async(req,res)=>{
-    let courseId = req.params.id;
-    console.log(courseId);
-    let verify = await db.sequelize.query(`SELECT * from Enrolments where user_id = 3 and course_id = ${courseId}`);
+    let enrol = {
+        user_id: req.params.user_id,
+        course_id: req.params.course_id
+    }
+    console.log(req.params.userid);
+    console.log(req.params.id);
+    let verify = await db.sequelize.query(`SELECT * from Enrolments where user_id = ${enrol.user_id} and course_id = ${enrol.course_id}`);
     console.log(verify[0].length);
 
     if(verify[0].length>0){
@@ -42,7 +46,7 @@ const enrolCourseById=expressAsyncHandler(async(req,res)=>{
         err.status = 400;
         throw err;
     }else if(verify[0].length==0){
-        await db.sequelize.query(`INSERT INTO Enrolments (user_id, course_id) VALUES (3, ${courseId})`)
+        await db.sequelize.query(`INSERT INTO Enrolments (user_id, course_id) VALUES (${enrol.user_id}, ${enrol.course_id})`)
     }
     res.status(200).json(verify);
 })

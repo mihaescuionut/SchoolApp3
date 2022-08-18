@@ -24,7 +24,7 @@ export default({object})=>{
       }
 
     return (
-        <div onClick={handleUnrolAndCancel} className="flex flex-col p-6 bg-darkBlue3 rounded-2xl shadow-2xl" id={object.id}>
+        <div onClick={handleUnrolAndCancel} className="flex flex-col p-6 bg-darkBlue3 rounded-2xl shadow-2xl md:w-1/3" id={object.id}>
           <div className="flex flex-col space-y-6">
             <div className="flex flex-col justify-center items-center mb-4 space-y-3 text-center md:text-left">
               <h3 className="font-bold text-2xl underline uppercase">{object.name}</h3>

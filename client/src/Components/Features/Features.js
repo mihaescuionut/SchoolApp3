@@ -55,10 +55,9 @@ export default()=>{
                 <div className="flex items-center justify-center h-24 mb-6">
                   <img src={colaborationIcon} alt="" />
                 </div>
-                <h3 className="text-xl font-bold">Access your file from anywhere</h3>
+                <h3 className="text-xl font-bold">Learn while you are anywhere</h3>
                 <p className="max-w-md">
-                  The ability to use a smartphone, tablet, or computer to access
-                  your account means your files follow you everywhere.
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat asperiores voluptas similique, vel cum reiciendis ut quidem? Ut, repellat. Blanditiis delectus quaerat autem excepturi minus impedit beatae rem voluptas consectetur.
                 </p>
               </div>
     
@@ -66,11 +65,9 @@ export default()=>{
                 <div className="flex items-center justify-center h-24 mb-6">
                   <img src={anyIcon} alt="" />
                 </div>
-                <h3 className="text-xl font-bold">Security you can trust</h3>
+                <h3 className="text-xl font-bold">All you need to learn</h3>
                 <p className="max-w-md">
-                  2-factor authentication and user-controlled encryption are just a
-                  couple of the security features we allow to help secure your
-                  files.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit eius quasi amet odit facere fuga sapiente est hic. Explicabo cum laboriosam hic aliquid sequi, et eveniet! Error voluptates mollitia minima?
                 </p>
               </div>
             </div>

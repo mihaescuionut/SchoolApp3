@@ -33,6 +33,7 @@ export default()=>{
 
       let api = new Api();
       let create = api.createCourse(course);
+      navigate('/');
     }else if(el.textContent == "CANCEL"){
       navigate("/");
     }

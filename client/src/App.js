@@ -13,6 +13,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserProvider from "./Context";
 
+
 function App() {
   return (
     <div className="App">
@@ -29,6 +30,7 @@ function App() {
           <Route path="/createCourse" element={<CreateCourse/>}/>
           <Route path="/login" element={<LogIn/>}/>
           <Route path="/register" element={<SignUp/>}/>
+
         </Routes>
         <Footer/>
         </UserProvider>

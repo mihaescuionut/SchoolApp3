@@ -25,7 +25,7 @@ app.get('*', (req, res)=>
     res.sendFile(path.resolve(__dirname, 'frontend', 'index.html')));
 
 db.sequelize.sync().then(()=>{
-    app.listen(process.env.PORT || 5000, ()=>{
+    app.listen(process.env.HOST || 5000, ()=>{
         console.log('ceva');
     })
 })

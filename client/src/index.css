@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-color: white;
+* {
+  color: white;
 }
-body{
-background: hsl(217, 28%, 15%)}
+body {
+  background: hsl(217, 28%, 15%);
+}
 
 .hamburger {
   cursor: pointer;
@@ -29,25 +30,73 @@ background: hsl(217, 28%, 15%)}
   transition: all 0.5s;
 }
 
-.hamburger-middle{
+.hamburger-middle {
   transform: translateY(7px);
 }
-.hamburger-bottom{
+.hamburger-bottom {
   transform: translateY(14px);
 }
 
-.open{
+.open {
   transform: rotate(90deg);
-  }
+}
 
-.open .hamburger-top{
+.open .hamburger-top {
   transform: rotate(45deg) translateY(6px) translateX(6px);
 }
 
-.open .hamburger-middle{
+.open .hamburger-middle {
   display: none;
 }
 
-.open .hamburger-bottom{
+.open .hamburger-bottom {
   transform: rotate(-45deg) translateY(6px) translateX(-6px);
 }
+
+.card_header {
+  position: relative;
+  background-size: cover;
+  height: 10rem;
+  width: 100%;
+  background-position: center;
+  background-blend-mode: screen;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  background-image: linear-gradient(to right bottom, #273244, #29436C);
+}
+
+.card_heading {
+  position: absolute;
+  background-image: linear-gradient(to right bottom, #29436C, #273244);
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  padding: 1rem;
+  right: 0.5rem;
+  bottom: 2rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.card__details {
+  padding: 1rem;
+  color: blue;
+}
+.card__details ul {
+  list-style: none;
+  width: 100%;
+  margin: 0 auto;
+}
+.card__details ul li {
+  text-align: center;
+  font-size: 1rem;
+  padding: 1rem;
+  color: #fff;
+}
+.card__details ul li:not(:last-child) {
+  border-bottom: 2px solid #eee;
+}
+
+

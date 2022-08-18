@@ -1,56 +1,63 @@
-import {React, useContext }from "react";
+import { React, useContext } from "react";
 import { IoSchoolOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
-import {Context} from "../../Context";
+import { Context } from "../../Context";
 import Cookies from "js-cookie";
+import { useEffect } from "react";
 
 export default () => {
   let navigate = useNavigate();
   const [user, setUser] = useContext(Context);
-  console.log(user);
-
 
   let handleNav = (e) => {
     let el = e.target;
-    let menu = document.getElementById("menu");
     if (el.textContent == "Home") {
       navigate("/");
-    } else if(el.textContent=="All Courses"){
-      navigate('/courses')
+    } else if (el.textContent == "All Courses") {
+      navigate("/courses");
     } else if (el.textContent == "My Courses") {
       navigate("/enroledCourses");
-    }else if(el.textContent == "Statistics"){
-      navigate('/statistics');
-    }else if(el.id == "login"){
-      navigate('/login');
-    }else if(el.textContent == "Sign Out"){
+    } else if (el.textContent == "Statistics") {
+      navigate("/statistics");
+    } else if (el.id == "login") {
+      navigate("/login");
+    } else if (el.textContent == "Sign Out") {
       setUser(undefined);
       Cookies.remove("authenticatedUser");
-    }else if(el.textContent == "Sign Up"){
-      navigate('/register')
-    } else if(el.id == "menu-btn"){
-      el.classList.toggle("open");
-      menu.classList.toggle("flex");
-      menu.classList.toggle("hidden");
-    }else if(el.id == "new_course"){
-      navigate('/createCourse')
+    } else if (el.textContent == "Sign Up") {
+      navigate("/register");
+    } else if (el.id == "new_course") {
+      navigate("/createCourse");
     }
   };
 
+  let navToggle = ()=>{
 
+    let menu = document.getElementById('menu');
+    let menuBtn = document.getElementById('menu-btn');
+
+      menuBtn.classList.toggle('open');
+      menu.classList.toggle('flex');
+      menu.classList.toggle('hidden');
+
+  }
 
   return (
     <header
-    onClick={handleNav}  className="flex items-center justify-center p-10 text-center h-40 md:h-20 md:flex md:flex-row md:justify-between md:items-center w-full"
+      onClick={handleNav}
+      className="flex items-center justify-center p-10 text-center h-40 md:h-20 md:flex md:flex-row md:justify-between md:items-center w-full"
     >
-      <div className="hidden items-center justify-center w-1/12 mx-auto md:mx-0 text-white text-2xl font-bold md:flex">
+      <div className="hidden items-center justify-center mx-auto text-white text-2xl font-bold md:flex md: w-1/12">
         <IoSchoolOutline size="4rem"></IoSchoolOutline>
       </div>
 
       {/* MENU */}
-      <div onClick={handleNav} className="h-10 hidden md:w-2/3  md:flex md:space-x-8 md:items-center md:justify-between ">
-        <div className="flex flex-row items-center gap-5 w-full">
+      <div
+        onClick={handleNav}
+        className="h-10 hidden w-full md:flex md:flex-row md:justify-around md:items-center"
+      >
+        <div className="flex flex-row items-center justify-center w-full gap-5">
           <a href="" className="hover:text-accentCyan font-bold">
             Home
           </a>
@@ -65,42 +72,45 @@ export default () => {
           </a>
         </div>
 
-        <div className="flex flex-row items-center justify-center w-1/2 gap-4">
-
-        {user ? 
-           
-           (
-           <>
-              <p>Welcome, {user.name}</p>      
+        <div className="flex flex-row items-center justify-center w-1/3 gap-2">
+          {user && user.role == "professor" ? (
+            <>
+              <p>Welcome, {user.name}</p>
               <a className="bg-red-400 font-bold p-3 w-full rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
                 Sign Out
               </a>
-              <button id="new_course" className="flex flex-row items-center justify-center p-3 bg-darkBlue3 gap-2 rounded-xl text-white font-bold hover:scale-110 transition-all duration-500">
-                 <FaPlus></FaPlus> Course
+              <button
+                id="new_course"
+                className="flex flex-row items-center justify-center p-3 bg-darkBlue3 gap-2 rounded-xl text-white font-bold hover:scale-110 transition-all duration-500"
+              >
+                <FaPlus></FaPlus> Course
               </button>
-           </>
-           )
-
-           :
-
-           (
-            
+            </>
+          ) : user && user.role == "user" ? (
             <>
-            <a id="login" className="font-bold p-3 rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
+              <p>Welcome, {user.name}</p>
+              <a className="bg-red-400 font-bold p-3 w-full rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
+                Sign Out
+              </a>
+            </>
+          ) : (
+            <>
+              <a
+                id="login"
+                className="font-bold p-3 rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer"
+              >
                 Login
-            </a>
-              <a className="bg-teal-400 font-bold p-3 rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
+              </a>
+              <a className="bg-teal-400 font-bold p-4 rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
                 Sign Up
               </a>
-              </>
-            )
-            }
-          
+            </>
+          )}
         </div>
       </div>
 
       <div className="absolute left-10 md:hidden">
-        <button
+        <button onClick={navToggle}
           id="menu-btn"
           type="button"
           className="z-40 absolute w-full hamburger md:hidden focus:outline-none"
@@ -132,16 +142,39 @@ export default () => {
         </div>
 
         <div className="flex flex-col gap-3 items-center justify-center">
-        <a
-            className="font-bold p-3 rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer"
-          >
-            Login
-          </a>
-          <a
-            className="bg-teal-400 p-2.5 rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer"
-          >
-            SignUp
-          </a>
+        {user && user.role == "professor" ? (
+            <>
+              <p>Welcome, {user.name}</p>
+              <a className="bg-red-400 font-bold p-3 w-full rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
+                Sign Out
+              </a>
+              <button
+                id="new_course"
+                className="flex flex-row items-center justify-center p-3 bg-darkBlue3 gap-2 rounded-xl text-white font-bold hover:scale-110 transition-all duration-500"
+              >
+                <FaPlus></FaPlus> Course
+              </button>
+            </>
+          ) : user && user.role == "user" ? (
+            <>
+              <p>Welcome, {user.name}</p>
+              <a className="bg-red-400 font-bold p-3 w-full rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
+                Sign Out
+              </a>
+            </>
+          ) : (
+            <>
+              <a
+                id="login"
+                className="font-bold p-3 rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer"
+              >
+                Login
+              </a>
+              <a className="bg-teal-400 font-bold p-3 rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
+                Sign Up
+              </a>
+            </>
+          )}
         </div>
       </div>
     </header>

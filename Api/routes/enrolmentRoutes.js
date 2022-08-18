@@ -11,7 +11,7 @@ router.route('/enrolments/:id')
 router.route('/unrol/:id')
 .delete(unrolCourseById, errorHandler)
 
-router.route('/enrol/:id')
+router.route('/enrol/:user_id&:course_id')
 .put(enrolCourseById, errorHandler)
 
 router.route('/stats')

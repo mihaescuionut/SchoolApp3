@@ -1,14 +1,58 @@
-import React from "react";
+import Api from "../api";
+import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 export default()=>{
+    let navigate = useNavigate();
+    const[firstName, setFirstName] = useState();
+    const[lastName, setLastName] = useState();
+    const[email, setEmail] = useState();
+    const[password, setPassword] = useState();
+    const[age, setAge] = useState();
 
+    let handleChange=(e)=>{
+      let el = e.target;
+      if(el.id == "first_name"){
+        setFirstName(el.value);
+      }
+      if(el.id == "last_name"){
+        setLastName(el.value)
+      }
+      if(el.id == "email"){
+        setEmail(el.value)
+      }
+      if(el.id == "password"){
+        setPassword(el.value)
+      }
+      if(el.id == "age"){
+        setAge(el.value)
+      }
+    }
+
+    let registerUser=async (e)=>{
+      e.preventDefault();
+      let account = {
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        password: password,
+        age: age,
+        role: "user"
+      }
+      console.log(account);
+      let api = new Api();
+      let register = await api.register(account);
+      navigate('/');
+    }
 
 
     return(
 
         <div className="flex justify-center items-center mt-20 mb-20 h-full">
-    <div className="w-1/2 p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100 md:w-1/2 lg:w-1/3 shadow-teal-400 shadow-lg">
+    <div onChange = {handleChange} className="w-1/2 p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100 md:w-1/2 lg:w-1/3 shadow-teal-400 shadow-lg">
       <h1 className="text-2xl font-bold text-center">Sign Up</h1>
       <form 
         novalidate=""
@@ -60,7 +104,7 @@ export default()=>{
           Age
           </label>
           <input
-            type="text"
+            type="number"
             name="Age"
             id="age"
             placeholder="Age"
@@ -74,7 +118,7 @@ export default()=>{
             </a>
           </div>
         </div>
-        <button className="block w-full p-3 text-center rounded-tl-full rounded-br-full text-gray-900 bg-teal-400 hover:-translate-y-1 hover:text-white transition-all duration-500 shadow-teal-800 shadow-md font-bold">
+        <button onClick={registerUser} className="block w-full p-3 text-center rounded-tl-full rounded-br-full text-gray-900 bg-teal-400 hover:-translate-y-1 hover:text-white transition-all duration-500 shadow-teal-800 shadow-md font-bold">
           Sign up
         </button>
       </form>

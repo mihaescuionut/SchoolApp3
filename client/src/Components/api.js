@@ -1,7 +1,7 @@
 export default class Api{
 
     api(path,method='GET',body=null,requiresAuth=false,credentials=null, token=null){
-        const url=path;
+        const url="ool-app-ionut.herokuapp.com/"+path;
         const options={
             method,
             headers: {
@@ -65,9 +65,9 @@ export default class Api{
         }
     }
 
-    async enrolCourseById(id){
+    async enrolCourseById(user_id, curs_id){
         try{
-            let add = await this.api(`api/enrol/${id}`, 'PUT');
+            let add = await this.api(`api/enrol/${user_id}&${curs_id}`, 'PUT');
             if(add.status!==200){
                 throw new Error(
                     console.log('error')
@@ -177,6 +177,19 @@ export default class Api{
                 throw new Error('no login')
             }else{
                 return login.json();
+            }
+        }catch(e){
+            console.log(e)
+        }
+    }
+
+    async register(user){
+        try{
+            let register = await this.api('api/register', 'POST', user);
+            if(register.status!==200){
+                throw new Error("cant register");
+            }else{
+                return register.json();
             }
         }catch(e){
             console.log(e)
