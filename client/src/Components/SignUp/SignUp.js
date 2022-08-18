@@ -52,7 +52,7 @@ export default()=>{
     return(
 
         <div className="flex justify-center items-center mt-20 mb-20 h-full">
-    <div onChange = {handleChange} className="w-1/2 p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100 md:w-1/2 lg:w-1/3 shadow-teal-400 shadow-lg">
+    <div onChange = {handleChange} className="w-2/3 p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100 md:w-1/2 lg:w-1/3 shadow-teal-400 shadow-lg">
       <h1 className="text-2xl font-bold text-center">Sign Up</h1>
       <form 
         novalidate=""

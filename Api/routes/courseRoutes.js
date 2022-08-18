@@ -7,7 +7,7 @@ import {getAllCourses, editCourse, deleteCourse, createCourse} from "../controll
 
 const router=express.Router();
 
-router.route("/courses")
+router.route("/allCourses")
 .get(getAllCourses,errorHandler);
 
 router.route("/editCrs/:id")

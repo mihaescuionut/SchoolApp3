@@ -1,7 +1,7 @@
 export default class Api{
 
     api(path,method='GET',body=null,requiresAuth=false,credentials=null, token=null){
-        const url="ool-app-ionut.herokuapp.com/"+path;
+        const url="https://school-app-ionut.herokuapp.com/"+path;
         const options={
             method,
             headers: {
@@ -22,7 +22,7 @@ export default class Api{
     async getAllCourses(){
 
         try{
-            let courses = await this.api('api/courses');
+            let courses = await this.api('api/allCourses');
             if(courses.status!==200){
                 throw new Error(
                     console.log('error')
