@@ -54,7 +54,7 @@ export default()=>{
   
           <div onChange={handleChange} className="flex flex-col justify-center items-center gap-4 w-full">
   
-            <div className="flex flex-row justify-center items-center gap-4 shadow-blue-600 shadow-sm rounded-xl p-4">
+            <div className="flex flex-row justify-center items-center gap-4 shadow-darkBlue1 shadow-lg rounded-xl p-4">
               <label htmlFor="course_name">COURSE NAME</label>
               <input
                 className="inline-block w-40 rounded-lg text-center text-darkBlue3 font-bold focus:outline-none uppercase h-12"
@@ -63,7 +63,7 @@ export default()=>{
                 placeholder="Course Name"
               />
             </div>
-            <div className="flex flex-row justify-center items-center gap-4 shadow-blue-600 shadow-sm rounded-xl p-4">
+            <div className="flex flex-row justify-center items-center gap-4 shadow-darkBlue1 shadow-lg rounded-xl p-4">
               <label htmlFor="course_name">DEPARTMENT</label>
               <input
                 className="inline-block w-40 rounded-lg text-center text-darkBlue3 font-bold focus:outline-none uppercase h-12"

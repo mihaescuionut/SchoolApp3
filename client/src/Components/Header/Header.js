@@ -141,7 +141,7 @@ export default () => {
           </a>
         </div>
 
-        <div className="flex flex-col gap-3 items-center justify-center">
+        <div className="flex flex-col items-center justify-center gap-2">
         {user && user.role == "professor" ? (
             <>
               <p>Welcome, {user.name}</p>

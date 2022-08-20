@@ -13,7 +13,7 @@ export default ({ course }) => {
   return (
     <div
       id={course.id}
-      className="flex flex-col items-center gap-4 pb-10 rounded-lg bg-gray-100 dark:bg-darkBlue3 relative"
+      className="flex flex-col items-center gap-4 pb-10 bg-darkBlue3 relative"
       data-aos="zoom-out"
       data-aos-duration="1500"
     >
@@ -24,8 +24,8 @@ export default ({ course }) => {
         </div>
 
 
-        <div className="card_heading shadow-darkBlue shadow-lg w-1/2" data-aos="fade-left" data-aos-duration="1500">
-          <h5 className="font-bold md:text-xl uppercase">
+        <div className="card_heading shadow-darkBlue shadow-lg w-2/5 md:w-1/2" data-aos="fade-left" data-aos-duration="1500">
+          <h5 className="font-bold text-sm md:text-xl uppercase">
             {course.name}
           </h5>
         </div>

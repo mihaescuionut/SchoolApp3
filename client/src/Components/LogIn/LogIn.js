@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../../Context";
 import Api from "../api";
 
+
 export default () => {
   const [user, setUser] = useContext(Context);
   const [email, setEmail] = useState();
@@ -31,11 +32,16 @@ export default () => {
       password: pass
     }
     let response = await api.login(u);
-    console.log(response);
+    
+    if(response){
+      setUser(response);
+      Cookies.set("authenticatedUser",JSON.stringify(response));
+      navigate('/');
+    }else{
+      console.log('We couldnt find this account');
+    }
 
-    setUser(response);
-    Cookies.set("authenticatedUser",JSON.stringify(response));
-    navigate('/');
+
 
   }
 
@@ -82,6 +88,7 @@ export default () => {
         <button onClick={handleLogin} className="block w-full p-3 text-center rounded-tl-full rounded-br-full text-gray-900 bg-teal-400 hover:-translate-y-1 hover:text-white transition-all duration-500 shadow-teal-800 shadow-md font-bold">
           Sign in
         </button>
+
       </form>
       <div className="flex items-center pt-4 space-x-1">
         <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>

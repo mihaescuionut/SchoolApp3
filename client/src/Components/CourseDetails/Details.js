@@ -81,11 +81,11 @@ export default ({ crs }) => {
   return (
     <section
       id="courses"
-      className="dark:bg-darkBlue1 flex justify-center items-center w-full py-5 mt-10"
+      className="bg-darkBlue1 flex justify-center items-center w-full py-5 mt-10"
     >
       <div
         onClick={handleEnrol}
-        className="flex flex-col p-6 m-3 mx-auto w-3/4 space-y-10 bg-darkBlue3 rounded-2xl shadow-2xl md:w-1/2"
+        className="flex flex-col p-6 m-3 mx-auto w-3/4 space-y-10 bg-gradient-to-br from-myLightDark to-myDarkDark rounded-2xl shadow-2xl shadow-black md:w-1/2"
       >
         <div className="flex flex-col space-y-6">
           <div className="flex flex-col justify-center items-center mb-4 gap-4 text-center md:text-left">
@@ -108,28 +108,28 @@ export default ({ crs }) => {
               nisi ut aliquip ex ea commodo consequat.
             </p>
 
-            <div className="grid grid-cols-2">
-              <div className="flex flex-row gap-2 items-center">
+            <div className="flex flex-col justify-center items-center gap-2"   >
+              <div className="flex flex-row gap-2 items-center justify-center">
                 <FaCheck /> <p> Beginner</p>
               </div>
-              <div className="flex flex-row gap-2 ml-3 items-center">
+              <div className="flex flex-row gap-2 items-center">
                 <FaCheck /> <p> Introduction to {curs.department} </p>
               </div>
-              <div className="flex flex-row gap-2 items-center ">
+              <div className="flex flex-row gap-2 items-center">
                 <FaCheck /> <p> Accredited course</p>
               </div>
-              <div className="flex flex-row gap-2 ml-3 items-center ">
-                <FaCheck /> <p> Data science</p>
+              <div className="flex flex-row gap-2 items-center">
+                <FaCheck /> <p> Computer science</p>
               </div>
-              <div className="flex flex-row gap-2 items-center ">
+              <div className="flex flex-row gap-2 items-center">
                 <FaCheck /> <p> Development</p>
               </div>
             </div>
 
-            <div className="flex flex-row justify-around items-center gap-4 w-full font-bold">
+            <div className="flex flex-row justify-center items-center gap-4 w-full font-bold">
               {!user ? (
                 <>
-                  <button className="bg-green-400 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500">
+                  <button className="bg-green-600 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500">
                     LOGIN
                   </button>
                   <button className="bg-sky-400 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500">
@@ -150,7 +150,7 @@ export default ({ crs }) => {
                 </>
               ) : (
                 <>
-                  <button className="bg-green-400 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500">
+                  <button className="bg-green-600 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500">
                     EDIT
                   </button>
                   <button className="bg-red-400 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500 ">

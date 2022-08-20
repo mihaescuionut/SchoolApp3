@@ -30,3 +30,5 @@ db.sequelize.sync().then(()=>{
     })
 })
 
+// process.env.PORT || 5000
+

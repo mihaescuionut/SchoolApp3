@@ -2,6 +2,8 @@ export default class Api{
 
     api(path,method='GET',body=null,requiresAuth=false,credentials=null, token=null){
         const url="https://school-app-ionut.herokuapp.com/"+path;
+        // https://school-app-ionut.herokuapp.com/
+        // http://localhost:3000/
         const options={
             method,
             headers: {
