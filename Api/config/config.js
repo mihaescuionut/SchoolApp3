@@ -29,7 +29,7 @@ const configDB=()=>{
         db.models.course = course(sequelize);
         db.models.book = book(sequelize);
 
-        //creare corsepondente
+        //database correspondents
 
         db.models.user.hasMany(db.models.enrolment,{
             onDelete: 'CASCADE',

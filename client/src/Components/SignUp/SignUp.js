@@ -15,6 +15,7 @@ export default()=>{
 
     let handleChange=(e)=>{
       let el = e.target;
+
       if(el.id == "first_name"){
         setFirstName(el.value);
       }
@@ -34,19 +35,34 @@ export default()=>{
 
     let registerUser=async (e)=>{
       e.preventDefault();
-      let account = {
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        password: password,
-        age: age,
-        role: "user"
+
+      if(firstName == undefined || firstName == "" || lastName == undefined || lastName == "" || email == undefined || email == "" || password == undefined || password == "" || age == undefined || age == ""){
+          alert('Complete all camps')
+      }else{
+        let account = {
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          password: password,
+          age: age,
+          role: "user"
+        }
+        console.log(account);
+        let api = new Api();
+        let register = await api.register(account);
+        navigate('/login');
       }
-      console.log(account);
-      let api = new Api();
-      let register = await api.register(account);
-      navigate('/');
+
+
+     
+
     }
+
+    let handleToLogin = () =>{
+      navigate('/login')
+    }
+
+
 
 
     return(
@@ -94,7 +110,7 @@ export default()=>{
           Password
           </label>
           <input
-            type="text"
+            type="password"
             name="Password"
             id="password"
             placeholder="Password"
@@ -113,7 +129,7 @@ export default()=>{
         </div>
         <div className="space-y-1 text-sm">
           <div className="flex justify-end text-xs dark:text-gray-400 ">
-            <a rel="noopener noreferrer" href="#" className="hover:text-white mt-2">
+            <a onClick={handleToLogin} rel="noopener noreferrer" href="#" className="hover:text-white mt-2">
               Already have an account? Sign in!
             </a>
           </div>
