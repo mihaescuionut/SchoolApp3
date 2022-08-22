@@ -38,11 +38,14 @@ export default () => {
       Cookies.set("authenticatedUser",JSON.stringify(response));
       navigate('/');
     }else{
-      console.log('We couldnt find this account');
+      alert('Email or password incorrect');
+      window.location.reload();
     }
 
+  }
 
-
+  let handleSignUp=()=>{
+    navigate('/register')
   }
 
   return (
@@ -129,6 +132,7 @@ export default () => {
       <p className="text-xs text-center sm:px-6 text-gray-400">
         Don't have an account?
         <a
+          onClick={handleSignUp}
           rel="noopener noreferrer"
           href="#"
           className="underline text-gray-300 ml-2 hover:text-white"

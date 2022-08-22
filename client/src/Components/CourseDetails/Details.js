@@ -48,7 +48,7 @@ export default ({ crs }) => {
       let unrol = await api.unrolCourseById(enrol.id);
       navigate("/enroledCourses");
     } else if (el.textContent == "CANCEL") {
-      navigate("/");
+      navigate("/courses");
     } else if (el.textContent == "EDIT") {
       navigate(`/editCourse/${id}`);
     } else if (el.textContent == "DELETE") {
@@ -130,10 +130,10 @@ export default ({ crs }) => {
             <div className="flex flex-row justify-center items-center gap-4 w-full font-bold">
               {!user ? (
                 <>
-                  <button className="bg-green-600 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500">
+                  <button className="bg-green-600 p-3 rounded-xl w-1/2 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500 md:w-1/3">
                     LOGIN
                   </button>
-                  <button className="bg-sky-400 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500">
+                  <button className="bg-sky-400 p-3 rounded-xl w-1/2 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500 md:w-1/3">
                     CANCEL
                   </button>
                 </>
@@ -141,11 +141,11 @@ export default ({ crs }) => {
                 <>
                   <button
                     id="enrol"
-                    className="bg-teal-600 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500"
+                    className="bg-teal-600 p-3 rounded-xl w-1/2 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500 md:w-1/3"
                   >
                     ENROL
                   </button>
-                  <button className="bg-sky-400 p-3 rounded-xl w-1/3 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500">
+                  <button className="bg-sky-400 p-3 rounded-xl w-1/2 hover:bg-opacity-90 transition-all hover:-translate-y-1 duration-500 md:w-1/3">
                     CANCEL
                   </button>
                 </>

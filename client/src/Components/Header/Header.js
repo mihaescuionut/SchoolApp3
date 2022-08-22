@@ -112,7 +112,7 @@ export default () => {
         </div>
       </div>
 
-      <div className="absolute left-10 md:hidden">
+      <div className="absolute left-5 top-5 md:hidden">
         <button onClick={navToggle}
           id="menu-btn"
           type="button"
@@ -126,15 +126,15 @@ export default () => {
 
       <div
         id="menu"
-        className="absolute top-0 bottom-0 left-0 hidden flex-row justify-center items-center w-full h-24 pb-28 pt-28 pl-12 gap-20 text-lg text-white bg-black md:hidden"
+        className="absolute top-0 bottom-0 left-0 hidden flex-row justify-center items-center w-full h-24 pb-28 pt-28 pl-8 gap-20 text-md text-white bg-black md:hidden"
       >
-        <div className="flex flex-col justify-start items-center">
+        <div className="flex flex-col justify-center items-center w-full">
           {" "}
           <a href="" className="hover:text-accentCyan font-bold">
             Home
           </a>
           <a href="" className="hover:text-accentCyan font-bold">
-            All Courses
+           All Courses
           </a>
           <a href="" className="hover:text-accentCyan font-bold">
             My Courses
@@ -144,16 +144,16 @@ export default () => {
           </a>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-2">
+        <div className="flex flex-col items-center justify-center gap-2 mr-4">
         {user && user.role == "professor" ? (
             <>
               <p>Welcome, {user.name}</p>
-              <a className="bg-red-400 font-bold p-3 w-full rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
+              <a className="bg-red-400 font-bold p-1.5 w-full rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
                 Sign Out
               </a>
               <button
                 id="new_course"
-                className="flex flex-row items-center justify-center p-3 bg-darkBlue3 gap-2 rounded-xl text-white font-bold hover:scale-110 transition-all duration-500"
+                className="flex flex-row items-center justify-center p-2 bg-darkBlue3 gap-2 rounded-xl text-white font-bold hover:scale-110 transition-all duration-500"
               >
                 <FaPlus></FaPlus> Course
               </button>
@@ -161,7 +161,7 @@ export default () => {
           ) : user && user.role == "user" ? (
             <>
               <p>Welcome, {user.name}</p>
-              <a className="bg-red-400 font-bold p-3 w-full rounded-xl hover:opacity-90 hover:-translate-y-1 transition-all duration-500 cursor-pointer">
+              <a className="bg-red-400 p-1.5 w-full rounded-xl ">
                 Sign Out
               </a>
             </>
