@@ -188,10 +188,11 @@ export default class Api{
     async register(user){
         try{
             let register = await this.api('api/register', 'POST', user);
-            if(register.status!==204){
-                throw new Error("Couldnt register");
-            }else{
+            if(register.status==204){
                 return register.json();
+                
+            }else{
+                throw new Error("Couldnt register");
             }
         }catch(e){
             console.log(e)
