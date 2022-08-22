@@ -46,13 +46,7 @@ export default()=>{
       e.preventDefault();
 
       if(firstName == undefined || firstName == "" || lastName == undefined || lastName == "" || email == undefined || email == "" || password == undefined || password == "" || age == undefined || age == ""){
-          alert('Complete all camps')
-      }else if(users){
-        users.forEach(e=>{
-          if(e.email == email){
-            alert('Already an account with this email!')
-          }
-        })
+          alert('Complete all camps') 
       }else{
         let account = {
           first_name: firstName,
@@ -62,10 +56,17 @@ export default()=>{
           age: age,
           role: "user"
         }
-       
-        let api = new Api();
-        let register = await api.register(account);
-        navigate('/login');
+
+        let verifyUsers = users.filter(e=>e.email == email);
+
+        if(verifyUsers.length == 0){
+          let api = new Api();
+          let register = await api.register(account);
+          navigate('/login');
+        }else{
+          alert('Already an account with this email!')
+        }
+
       }
 
 
