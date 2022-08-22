@@ -1,5 +1,5 @@
 import Api from "../api";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -12,6 +12,15 @@ export default()=>{
     const[email, setEmail] = useState();
     const[password, setPassword] = useState();
     const[age, setAge] = useState();
+    const [users, setUsers] = useState([]);
+    
+    let getAllUsers = async()=>{
+  
+      let api = new Api();
+      let users = await api.getAllUsers();
+  
+      setUsers(users);
+    }
 
     let handleChange=(e)=>{
       let el = e.target;
@@ -38,6 +47,12 @@ export default()=>{
 
       if(firstName == undefined || firstName == "" || lastName == undefined || lastName == "" || email == undefined || email == "" || password == undefined || password == "" || age == undefined || age == ""){
           alert('Complete all camps')
+      }else if(users){
+        users.forEach(e=>{
+          if(e.email == email){
+            alert('Already an account with this email!')
+          }
+        })
       }else{
         let account = {
           first_name: firstName,
@@ -47,7 +62,7 @@ export default()=>{
           age: age,
           role: "user"
         }
-        console.log(account);
+       
         let api = new Api();
         let register = await api.register(account);
         navigate('/login');
@@ -61,6 +76,10 @@ export default()=>{
     let handleToLogin = () =>{
       navigate('/login')
     }
+
+    useEffect(()=>{
+      getAllUsers();
+    }, []);
 
 
 

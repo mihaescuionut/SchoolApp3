@@ -198,4 +198,20 @@ export default class Api{
             console.log(e)
         }
     }
+
+    async getAllUsers(){
+
+        try{
+            let users = await this.api('api/allUsers');
+            if(users.status!==200){
+                throw new Error(
+                    console.log('error')
+                )
+            }else{
+                return users.json();
+            }
+        }catch(e){
+            console.log(e)
+        }
+    }   
 }

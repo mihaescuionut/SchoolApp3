@@ -6,7 +6,7 @@ import protect from "../middleware/authentification.js";
 
 const router = express.Router();
 
-router.route('/users') 
+router.route('/allUsers') 
 .get(getAllUsers, errorHandler)
 
 router.route('/register')
