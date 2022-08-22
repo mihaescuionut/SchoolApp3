@@ -30,7 +30,7 @@ const registerUser=expressAsyncHandler(async(req, res)=>{
     }
 
     await db.models.user.create(user);
-    res.status(204).end();
+    res.status(200).end();
 });
 
 
