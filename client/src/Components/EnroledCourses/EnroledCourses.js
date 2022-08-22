@@ -23,7 +23,11 @@ export default () => {
   }, [user]);
 
   return (
+
+
     <section id="courses" className="flex flex-col justify-center items-center w-full">
+
+      
       <div className="bg-darkBlue flex flex-col justify-center items-center gap-3 md:flex md:flex-row md:flex-wrap p-5 md:items-stretch w-full py-5 mt-28">
         {enrol.length > 0 ? (
           enrol.map((e) => (

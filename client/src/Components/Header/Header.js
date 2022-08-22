@@ -46,7 +46,7 @@ export default () => {
   return (
     <header
       onClick={handleNav}
-      className="flex items-center justify-center p-10 text-center h-40 md:h-20 md:flex md:flex-row md:justify-between md:items-center w-full"
+      className="flex items-center justify-center p-10 text-center h-40 md:h-20 md:flex md:flex-row md:justify-around md:items-center w-full"
     >
       <div className="hidden items-center justify-center mx-auto text-white text-2xl font-bold md:flex md: w-1/12">
         <IoSchoolOutline size="4rem"></IoSchoolOutline>
@@ -57,6 +57,8 @@ export default () => {
         onClick={handleNav}
         className="h-10 hidden w-full md:flex md:flex-row md:justify-around md:items-center"
       >
+
+
         <div className="flex flex-row items-center justify-center w-full gap-5">
           <a href="" className="hover:text-accentCyan font-bold">
             Home
@@ -64,9 +66,10 @@ export default () => {
           <a href="" className="hover:text-accentCyan font-bold">
             All Courses
           </a>
-          <a href="" className="hover:text-accentCyan font-bold">
+          {user && user.role=="user" ? <a href="" className="hover:text-accentCyan font-bold">
             My Courses
-          </a>
+          </a> : <></>}
+
           <a href="" className="hover:text-accentCyan font-bold">
             Statistics
           </a>

@@ -1,8 +1,7 @@
 import { FaCheck } from "react-icons/fa";
-import { useParams } from "react-router-dom";
 import { useEffect, React, useState, useContext } from "react";
 import Api from "../api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { Context } from "../../Context";
 
@@ -55,6 +54,8 @@ export default ({ crs }) => {
     } else if (el.textContent == "DELETE") {
       let del = await api.deleteCourseById(id);
       navigate("/courses");
+    } else if (el.textContent == "LOGIN") {
+      navigate('/login')
     }
   };
 
