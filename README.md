@@ -14,5 +14,5 @@ You can login as:
 ◦ user, where you can enrol and unsub a course.
 
 admin account: 
- - email: admin@admin.com
+ - email: ionut@gmail.com
  - password: 12345
