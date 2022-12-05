@@ -3,7 +3,7 @@
 
 School-App project created with:
 
-◦ Back-end tech (mysql, express, sequelize, bcrypt, jsonwebtoken); - you can register/login with security on routes;
+◦ Back-end tech (mysql, express js, sequelize); - you can register/login with security on routes;
 
 ◦ Front-end tech (html, css, react, tailwind framework);
 
