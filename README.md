@@ -1,5 +1,5 @@
-# SchoolApp3
-https://school-app-ionut.herokuapp.com/
+# SchoolApp
+// no more deployed
 
 School-App project created with:
 
